@@ -1,0 +1,209 @@
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<script src="static/js/jquery-3.2.1.min.js"></script>
+		<script src="static/js/bootstrap.min.js"></script>
+		<script src="static/js/w3.js"></script>
+		<link rel="stylesheet" href="static/css/bootstrap.min.css">
+		<link rel="stylesheet" href="static/css/navbar.css">
+		<link rel="stylesheet" href="static/css/styles.css">
+		<link rel="stylesheet" href="static/css/bubble.css">
+
+		<style>
+			.mydiv{
+				position: relative;
+				top: 40%;
+				transform: translateY(-50%);
+			}
+			span{
+				font-size: 0.9em;
+			}
+		</style>
+	</head>
+	<body class="pale">	
+		<div w3-include-html="include/navbar.html" class="navbar navbar-default"></div>
+		<div class="container centerscreen">
+			<div class="row">
+				<div class="col-xs-12 col-sm-8 col-sm-offset-2">
+					<div class="col-xs-4 col-sm-4">
+					 	<div class="panel panelTrack">
+					 		<div class="panel-heading text-center">
+					 			<img class="title margins" src="static/img/bird.png" ><br>
+					 			<h4 class="word">Sports</h4>
+					 		</div>
+					 	</div>
+					</div>
+					<div class="col-xs-4 col-sm-4">
+					 	<div class="panel panelTrack">
+					 		<div class="panel-heading text-center">
+					 			<img class="title margins" src="static/img/bird.png" ><br>
+					 			<h4 class="word">HUMSS</h4>
+					 		</div>
+					 	</div>
+					</div>
+					<div class="col-xs-4 col-sm-4">
+					 	<div class="panel panelTrack">
+					 		<div class="panel-heading text-center">
+					 			<img class="title margins" src="static/img/bird.png" ><br>
+					 			<h4 class="word">ArtsDesign</h4>
+					 		</div>
+					 	</div>
+					</div>
+				</div>
+			</div>
+			<div id="careerscourses">
+				<div class="row" id="careersrow">
+					<div class="col-xs-12 col-sm-8 col-sm-offset-2">
+						<div class="col-xs-4 col-sm-4">
+						 	<div class="panel panelCareers">
+						 		<div class="panel-heading text-center">
+						 			<img class="title margins" src="static/img/bird.png" ><br>
+						 			<h5>Career Name</h5>
+						 		</div>
+						 	</div>
+						</div>
+						<div class="col-xs-4 col-sm-4">
+						 	<div class="panel panelCareers">
+						 		<div class="panel-heading text-center">
+						 			<img class="title margins" src="static/img/bird.png" ><br>
+						 			<h5>Career Name</h5>
+						 		</div>
+						 	</div>
+						</div>
+						<div class="col-xs-4 col-sm-4">
+						 	<div class="panel panelCareers">
+						 		<div class="panel-heading text-center">
+						 			<img class="title margins" src="static/img/bird.png" ><br>
+						 			<h5>Career Name</h5>
+						 		</div>
+						 	</div>
+						</div>
+					</div>
+				</div>
+				<div id="delayrow">
+					<div class="row" id="coursesrow">
+						<div class="col-xs-12 col-sm-8 col-sm-offset-2">
+							<div class="col-xs-4 col-sm-4">
+							 	<div class="panel panelCourses">
+							 		<div class="panel-heading">
+							 			<h6>Possible Courses</h6>
+								 		<span>Description</span>
+							 		</div>
+							 	</div>
+							</div>
+							<div class="col-xs-4 col-sm-4">
+							 	<div class="panel panelCourses">
+							 		<div class="panel-heading">
+							 			<h6>Possible Courses</h6>
+								 		<span>Description</span>
+							 		</div>
+							 	</div>
+							</div>
+							<div class="col-xs-4 col-sm-4">
+							 	<div class="panel panelCourses">
+							 		<div class="panel-heading">
+							 			<h6>Possible Courses</h6>
+								 		<span>Description</span>
+							 		</div>
+							 	</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div w3-include-html="include/footer.html" class="row footer"></div>
+	</body>
+</html>
+
+<script>
+	var Tracks = {
+					ABM : ["Business","Public and Human Services","ABMCareer","CourseA","CourseB","CourseM","CourseM","CourseB","CourseA","CourseB","CourseM","CourseA","CourseA","CourseA","CourseA","CourseA","CourseA","CourseA","CourseA","CourseA","CourseA"],
+					HUMSS : ["Business","Public and Human Services","ABMCareer","CourseA","CourseB","CourseM","CourseM","CourseB","CourseA","CourseB","CourseM","CourseA","CourseA","CourseA","CourseA","CourseA","CourseA","CourseA","CourseA","CourseA","CourseA"],
+					STEM : ["Science","NotScience","VeryScience","HAHAHA","Courses","WAOW","CourseM","CourseB","CourseA","CourseB","CourseM","CourseA","CourseA","CourseA","CourseA","CourseA","CourseA","CourseA","CourseA","CourseA","CourseA"],
+					GAS : ["BE","Normal","GAS","Gasolinahan","Exist","Explode","CourseM","CourseB","CourseA","CourseB","CourseM","CourseA","CourseA","CourseA","CourseA","CourseA","CourseA","CourseA","CourseA","CourseA","CourseA"],
+					ArtsDesign : ["Paint","Public Paint","Computer Paint","NOt Paint","CourseB","CourseM","CourseM","CourseB","CourseA","CourseB","CourseM","CourseA","CourseA","CourseA","CourseA","CourseA","CourseA","CourseA","CourseA","CourseA","CourseA"],
+					Sports: ["Physical Education Instructor", "Physical Therapist", "Coach",
+							 "Bachelor in Elementary Education Major in MAPE", "Description of AHAHAHD",
+							 "Bachelor in Secondary Education Major in MAPEH", "Description of PAAAD",
+							 "Bachelor of Science in Education Major in Physical Education", "Description of PEED",
+							 "Skating", "Description of PEID",
+							 "Rolling", "Description of PEID",
+							 "Hating", "Description of PADAAD",
+							 "TEST", "Description of PEID",
+							 "Sports", "Description of PAAOOAID",
+							 "AAHAH", "Description of PEID"]
+				};
+
+	$(document).ready(function(){
+		$( ".panel-body" ).hide();
+		$( "#careersrow" ).hide();
+		$( "#coursesrow" ).hide();
+		$( "#careerscourses" ).hide();
+		$( "#delayrow" ).hide();
+		
+		checkColor();
+		var iterator = 0;
+		$( ".panelTrack" ).click(function() {
+			// Colors
+			track = $(this).find("h4").html();
+			classHold = track.toLowerCase()+"Class";
+			$('.panelCareers').each(function(){
+		        var panelHeading = $(this).find(".panel-heading");
+		        panelHeading.removeClass();
+		        panelHeading.addClass("panel-heading text-center "+classHold);
+		        // panelHeading.css("opacity","0.9");
+		    });
+			$('.panelCourses').each(function(){
+		        var panelHeading = $(this).find(".panel-heading");
+		        panelHeading.removeClass();
+		        panelHeading.addClass("panel-heading text-center "+classHold);
+		        // panelHeading.css("opacity","0.8");
+		    });
+
+			// Set Text
+			iterator = 0;
+			$('.panelCareers').each(function(){
+		        $(this).find("h5").text(Tracks[track][iterator++]);
+		    });
+
+			// Animations
+			$( "#careerscourses" ).slideToggle( "slow", function() {
+				$( "#careersrow" ).slideToggle( "slow", function() {
+					$( ".panelCareers" ).slideDown( "slow", function() {});
+					$( "#delayrow" ).slideUp( "slow", function() {
+						$( "#coursesrow" ).slideUp( "slow", function() {});
+					});
+				});
+			});
+			$('.panelTrack').not(this).each(function(){
+		        $(this).slideToggle();
+		    });
+		});
+
+		$( ".panelCareers" ).click(function() {
+			//setText
+			iterator = 3 + (6 * $(".panelCareers").index(this));
+			$('.panelCourses').each(function(){
+		        $(this).find("h6").text(Tracks[track][iterator++]);
+		        $(this).find("span").text(Tracks[track][iterator++]);
+		    });
+
+			// Animations
+			$( "#delayrow" ).slideToggle( "slow", function() {
+				$( "#coursesrow" ).slideToggle( "slow", function() {});
+			});
+			$(".panelCareers").not(this).each(function(){
+		        $(this).slideToggle();
+		    });
+		});
+	});
+
+	function checkColor(){
+		$('.panelTrack').each(function(){
+	        $(this).find(".panel-heading").addClass($(this).find("h4").html().toLowerCase()+"Class");
+	    });
+	}
+</script>
+<script> w3.includeHTML(); </script>
