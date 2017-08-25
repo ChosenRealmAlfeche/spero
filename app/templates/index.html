@@ -1,4 +1,5 @@
 <html>
+	{% block head %}
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,6 +12,8 @@
 		<link rel="stylesheet" href="static/css/bubble.css">
 
 	</head>
+	{% endblock %}
+	{% block content %}
 	<body class="pale">	
 		<div class="fullscreen">
 			<div class="container">
@@ -43,10 +46,11 @@
 					</div>
 				</div>
 			</div>
-			<div w3-include-html="include/footer.html" class="row footer"></div>
+			{% include "include/footer.html" %}
+			<!--<div w3-include-html="include/footer.html" class="row footer"></div>-->
 		</div>
-		
 	</body>
+	{% endblock %}
 </html>
 <script>
 	window.setTimeout(function(){

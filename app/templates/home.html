@@ -1,4 +1,5 @@
 <html>
+	{% block head %}
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -21,8 +22,11 @@
 			}
 		</style>
 	</head>
+	{% endblock %}
+	{% block content %}
 	<body class="pale">	
-		<div w3-include-html="include/navbar.html" class="navbar navbar-default"></div>
+		{% include "include/navbar.html" %}
+		<!--<div w3-include-html="include/navbar.html" class="navbar navbar-default"></div>-->
 		<div class="container centerscreen">
 			<div class="row">
 				<div class="col-xs-12 col-sm-8 col-sm-offset-2">
@@ -113,8 +117,11 @@
 				</div>
 			</div>
 		</div>
-		<div w3-include-html="include/footer.html" class="row footer"></div>
+
+		{% include "include/footer.html" %}
+		<!--<div w3-include-html="include/footer.html" class="row footer"></div>-->
 	</body>
+	{% endblock %}
 </html>
 
 <script>
