@@ -143,3 +143,11 @@ def getCourse():
                         "ARTSDESIGN" : {"1" : "Fine Arts", "2" : "Architecture and Design", "3" : "Tourism?"},
                         "HUMMS": {"1" : "Reed", "2" : "Philisophy", "3" : "Humanities"}
                     })
+
+@app.route('/logout')
+def logout():
+    session.pop('uID',None)
+    session.pop('gL',None)
+    session.pop('loggedIN',None)
+
+    return redirect(url_for('index'))
