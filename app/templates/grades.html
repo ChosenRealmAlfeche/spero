@@ -1,132 +1,240 @@
 <html>
-	{% block head %}
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<script src="static/js/jquery-3.2.1.min.js"></script>
 		<script src="static/js/bootstrap.min.js"></script>
 		<script src="static/js/w3.js"></script>
+		<script src="static/js/main.js"></script>
+		<script src="static/js/grades.js"></script>
 		<link rel="stylesheet" href="static/css/bootstrap.min.css">
 		<link rel="stylesheet" href="static/css/navbar.css">
 		<link rel="stylesheet" href="static/css/styles.css">
 		<link rel="stylesheet" href="static/css/bubble.css">
-		<style>
-			
-		</style>
 	</head>
-	{% endblock %}
-
-	{% block content %}
 	<body class="pale">	
-		{% include 'include/navbar.html' %}
-		<!--<div w3-include-html="include/navbar.html" class="navbar navbar-default"></div>-->
-		<div class="container centerscreen">
+		<header w3-include-html="static/include/navbar.html"></header>
+		<article>
+		<div class="container-fluid">
 			<div class="row">
-				<div class="col-xs-12 col-sm-3 col-sm-offset-1 " align="center">
-					<div class="hidden-xs"><br><br><br><br><br></div>
+				<div class="col-xs-12 col-md-10 col-md-offset-1 text-center">
+					<div class="col-xs-12 col-md-1 text-center">
+						<div class="panel panelRound gradeLevels" id ="hsLevel">
+					 		<div class="panel-heading text-center panelRound">
+					 			<h5>
+					 				<span class="hidden-xs">HS</span>
+					 				<span class="hidden-sm hidden-md hidden-lg">HighSchool</span>
+					 			</h5>
+					 		</div>
+					 	</div>
+					 	<div class="panel panelRound gradeLevels" id ="eLevel">
+					 		<div class="panel-heading text-center panelRound">
+					 			<h5>
+					 				<span class="hidden-xs">E</span>
+					 				<span class="hidden-sm hidden-md hidden-lg">Elementary</span>
+					 			</h5>
+					 		</div>
+					 	</div>
+					</div>
+					<div class="col-xs-12 col-md-11 text-center">
+						<div class="col-xs-4 col-md-2 text-center eGrade gradeLevel">
+							<div class="panel panelRound" id="grade1">
+						 		<div class="panel-heading text-center panelRound">
+						 			<h5>Grade 1</h5>
+						 		</div>
+						 	</div>
+						</div>
+						<div class="col-xs-4 col-md-2 text-center eGrade gradeLevel">
+							<div class="panel panelRound" id="grade2">
+						 		<div class="panel-heading text-center panelRound">
+						 			<h5>Grade 2</h5>
+						 		</div>
+						 	</div>
+						</div>
+						<div class="col-xs-4 col-md-2 text-center eGrade gradeLevel">
+							<div class="panel panelRound" id="grade3">
+						 		<div class="panel-heading text-center panelRound">
+						 			<h5>Grade 3</h5>
+						 		</div>
+						 	</div>
+						</div>
+						<div class="col-xs-4 col-md-2 text-center eGrade gradeLevel">
+							<div class="panel panelRound" id="grade4">
+						 		<div class="panel-heading text-center panelRound">
+						 			<h5>Grade 4</h5>
+						 		</div>
+						 	</div>
+						</div>
+						<div class="col-xs-4 col-md-2 text-center eGrade gradeLevel">
+							<div class="panel panelRound" id="grade5">
+						 		<div class="panel-heading text-center panelRound">
+						 			<h5>Grade 5</h5>
+						 		</div>
+						 	</div>
+						</div>
+						<div class="col-xs-4 col-md-2 text-center eGrade gradeLevel">
+							<div class="panel panelRound" id="grade6">
+						 		<div class="panel-heading text-center panelRound">
+						 			<h5>Grade 6</h5>
+						 		</div>
+						 	</div>
+						</div>
+						<div class="col-xs-4 col-md-2 text-center eGrade gradeLevel gradeUp">
+							<div class="panel panelRound" id="eGradeUp">
+						 		<div class="panel-heading text-center panelRound">
+						 			<h5>Grade Up +</h5>
+						 		</div>
+						 	</div>
+						</div>
+						<div class="col-xs-6 col-md-3 text-center hsGrade gradeLevel">
+							<div class="panel panelRound" id="grade7">
+						 		<div class="panel-heading text-center panelRound">
+						 			<h5>Grade 7</h5>
+						 		</div>
+						 	</div>
+						</div>
+						<div class="col-xs-6 col-md-3 text-center hsGrade gradeLevel">
+							<div class="panel panelRound" id="grade8">
+						 		<div class="panel-heading text-center panelRound">
+						 			<h5>Grade 8</h5>
+						 		</div>
+						 	</div>
+						</div>
+						<div class="col-xs-6 col-md-3 text-center hsGrade gradeLevel">
+							<div class="panel panelRound" id="grade9">
+						 		<div class="panel-heading text-center panelRound">
+						 			<h5>Grade 9</h5>
+						 		</div>
+						 	</div>
+						</div>
+						<div class="col-xs-6 col-md-3 text-center hsGrade gradeLevel">	
+							<div class="panel panelRound" id="grade10">
+						 		<div class="panel-heading text-center">
+						 			<h5>Grade 10</h5>
+						 		</div>
+						 	</div>
+						</div>
+						<div class="col-xs-6 col-md-3 text-center hsGrade gradeLevel gradeUp">	
+							<div class="panel panelRound" id="hsGradeUp">
+						 		<div class="panel-heading text-center">
+						 			<h5>Grade Up +</h5>
+						 		</div>
+						 	</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-12 col-md-3 col-md-offset-1 " align="center">
+					<div class="hidden-sm hidden-xs"><br><br><br><br><br></div>
 				 	<div class="talk-bubble round tri-right left-top-bot">
 						<div class="talktext">
-							Enter Grades!
+							For me to recommend tracks, please enter your grades!
 				 		</div>
 				 	</div>
-				 	<img class="title marginTop hidden-xs" src="static/img/bird.png" >
+				 	<img class="title marginTop hidden-xs hidden-sm" src="static/img/bird.png" >
 				</div>
-				<div class="col-xs-12 col-sm-7">
-					<table class="table">
+				<div class="col-xs-12 col-md-7">
+					<table class="table tblGrades">
 						<thead>
 							<tr>
-								<th>1st <span class="hidden-xs">Period</span></th>
-								<th>2nd <span class="hidden-xs">Period</span></th>
-								<th>3rd <span class="hidden-xs">Period</span></th>
-								<th>4th <span class="hidden-xs">Period</span></th>
+								<th>1st <span class="hidden-xs">Grading Period</span></th>
+								<th>2nd <span class="hidden-xs">Grading Period</span></th>
+								<th>3rd <span class="hidden-xs">Grading Period</span></th>
+								<th>4th <span class="hidden-xs">Grading Period</span></th>
 							</tr>
 						</thead>
-						<tbody>
+						<tbody id="tblBody">
 							<tr>
 								<td>
-									<input type="text" placeholder="English Grade" class="form-control">
+									<input type="number" placeholder="English Grade" class="form-control">
 								</td>
 								<td>
-									<input type="text" placeholder="English Grade" class="form-control">
+									<input type="number" placeholder="English Grade" class="form-control">
 								</td>
 								<td>
-									<input type="text" placeholder="English Grade" class="form-control">
+									<input type="number" placeholder="English Grade" class="form-control">
 								</td>
 								<td>
-									<input type="text" placeholder="English Grade" class="form-control">
+									<input type="number" placeholder="English Grade" class="form-control">
 								</td>
 							</tr>
 							<tr>
 								<td>
-									<input type="text" placeholder="Math Grade" class="form-control">
+									<input type="number" placeholder="Math Grade" class="form-control">
 								</td>
 								<td>
-									<input type="text" placeholder="Math Grade" class="form-control">
+									<input type="number" placeholder="Math Grade" class="form-control">
 								</td>
 								<td>
-									<input type="text" placeholder="Math Grade" class="form-control">
+									<input type="number" placeholder="Math Grade" class="form-control">
 								</td>
 								<td>
-									<input type="text" placeholder="Math Grade" class="form-control">
-								</td>
-							</tr>
-							<tr>
-								<td>
-									<input type="text" placeholder="Science Grade" class="form-control">
-								</td>
-								<td>
-									<input type="text" placeholder="Science Grade" class="form-control">
-								</td>
-								<td>
-									<input type="text" placeholder="Science Grade" class="form-control">
-								</td>
-								<td>
-									<input type="text" placeholder="Science Grade" class="form-control">
+									<input type="number" placeholder="Math Grade" class="form-control">
 								</td>
 							</tr>
 							<tr>
 								<td>
-									<input type="text" placeholder="Filipino Grade" class="form-control">
+									<input type="number" placeholder="Science Grade" class="form-control">
 								</td>
 								<td>
-									<input type="text" placeholder="Filipino Grade" class="form-control">
+									<input type="number" placeholder="Science Grade" class="form-control">
 								</td>
 								<td>
-									<input type="text" placeholder="Filipino Grade" class="form-control">
+									<input type="number" placeholder="Science Grade" class="form-control">
 								</td>
 								<td>
-									<input type="text" placeholder="Filipino Grade" class="form-control">
-								</td>
-							</tr>
-							<tr>
-								<td>
-									<input type="text" placeholder="Araling Panlipunan Grade" class="form-control">
-								</td>
-								<td>
-									<input type="text" placeholder="Araling Panlipunan Grade" class="form-control">
-								</td>
-								<td>
-									<input type="text" placeholder="Araling Panlipunan Grade" class="form-control">
-								</td>
-								<td>
-									<input type="text" placeholder="Araling Panlipunan Grade" class="form-control">
+									<input type="number" placeholder="Science Grade" class="form-control">
 								</td>
 							</tr>
 							<tr>
 								<td>
-									<input type="text" placeholder="Mapeh Grade" class="form-control">
+									<input type="number" placeholder="Filipino Grade" class="form-control">
 								</td>
 								<td>
-									<input type="text" placeholder="Mapeh Grade" class="form-control">
+									<input type="number" placeholder="Filipino Grade" class="form-control">
 								</td>
 								<td>
-									<input type="text" placeholder="Mapeh Grade" class="form-control">
+									<input type="number" placeholder="Filipino Grade" class="form-control">
 								</td>
 								<td>
-									<input type="text" placeholder="Mapeh Grade" class="form-control">
+									<input type="number" placeholder="Filipino Grade" class="form-control">
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<input type="number" placeholder="Araling Panlipunan Grade" class="form-control">
+								</td>
+								<td>
+									<input type="number" placeholder="Araling Panlipunan Grade" class="form-control">
+								</td>
+								<td>
+									<input type="number" placeholder="Araling Panlipunan Grade" class="form-control">
+								</td>
+								<td>
+									<input type="number" placeholder="Araling Panlipunan Grade" class="form-control">
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<input type="number" placeholder="Mapeh Grade" class="form-control">
+								</td>
+								<td>
+									<input type="number" placeholder="Mapeh Grade" class="form-control">
+								</td>
+								<td>
+									<input type="number" placeholder="Mapeh Grade" class="form-control">
+								</td>
+								<td>
+									<input type="number" placeholder="Mapeh Grade" class="form-control">
 								</td>
 							</tr>
 						</tbody>
+							<tr>
+								<td colspan="4">
+									<button class="btn" onclick="confirmGreyOut()" type="button">Input Next Grading Period</span></button>
+								</td>
+							</tr>
 							<tr>
 								<td colspan="4">
 									<a href="questions.html"><button class="btn" type="button">Submit</span></button></a>
@@ -141,12 +249,11 @@
 				
 			</div>
 		</div>
-		<!-- <div w3-include-html="include/footer.html" class="row footer"></div> -->
-		{% include "include/footer.html" %}
+		</article>
+		<footer w3-include-html="static/include/footer.html"></footer>
 	</body>
-	{% endblock %}
 </html>
-<script> w3.includeHTML(); </script>
+
 <!-- 
 English
 Math

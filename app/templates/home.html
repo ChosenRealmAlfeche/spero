@@ -1,216 +1,222 @@
 <html>
-	{% block head %}
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<script src="static/js/jquery-3.2.1.min.js"></script>
-		<script src="static/js/bootstrap.min.js"></script>
-		<script src="static/js/w3.js"></script>
-		<link rel="stylesheet" href="static/css/bootstrap.min.css">
-		<link rel="stylesheet" href="static/css/navbar.css">
-		<link rel="stylesheet" href="static/css/styles.css">
-		<link rel="stylesheet" href="static/css/bubble.css">
-
-		<style>
-			.mydiv{
-				position: relative;
-				top: 40%;
-				transform: translateY(-50%);
-			}
-			span{
-				font-size: 0.9em;
-			}
-		</style>
+		<script src="js/jquery-3.2.1.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<script src="js/w3.js"></script>
+		<script src="js/main.js"></script>
+		<script src="js/home.js"></script>
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+		<link rel="stylesheet" href="css/navbar.css">
+		<link rel="stylesheet" href="css/styles.css">
+		<link rel="stylesheet" href="css/bubble.css">
 	</head>
-	{% endblock %}
-	{% block content %}
 	<body class="pale">	
-		{% include "include/navbar.html" %}
-		<!--<div w3-include-html="include/navbar.html" class="navbar navbar-default"></div>-->
-		<div class="container centerscreen">
-			<div class="row">
-				<div class="col-xs-12 col-sm-8 col-sm-offset-2">
-					<div class="col-xs-4 col-sm-4">
-					 	<div class="panel panelTrack">
-					 		<div class="panel-heading text-center">
-					 			<img class="title margins" src="static/img/bird.png" ><br>
-					 			<h4 class="word">Sports</h4>
-					 		</div>
-					 	</div>
-					</div>
-					<div class="col-xs-4 col-sm-4">
-					 	<div class="panel panelTrack">
-					 		<div class="panel-heading text-center">
-					 			<img class="title margins" src="static/img/bird.png" ><br>
-					 			<h4 class="word">HUMSS</h4>
-					 		</div>
-					 	</div>
-					</div>
-					<div class="col-xs-4 col-sm-4">
-					 	<div class="panel panelTrack">
-					 		<div class="panel-heading text-center">
-					 			<img class="title margins" src="static/img/bird.png" ><br>
-					 			<h4 class="word">ArtsDesign</h4>
-					 		</div>
-					 	</div>
-					</div>
+		<header w3-include-html="include/navbar.html"></header>
+		<article>
+		<div class="container">
+			<div class="row hidden-xs">
+				<div class="col-sm-12 text-center ">
+					<div class="panel">
+				 		<div class="panel-heading text-center panel-heading-color">
+				 			<h4>Here are the top 3 tracks for you!</h4>
+				 		</div>
+				 	</div>
 				</div>
 			</div>
-			<div id="careerscourses">
-				<div class="row" id="careersrow">
-					<div class="col-xs-12 col-sm-8 col-sm-offset-2">
+			<div class="row">
+				<div class="col-xs-12 col-sm-2">
+					<div class="panel panelRound" id="panelFocus">
+				 		<div class="panel-heading text-center">
+				 			<img class="titleEquipped margins" src="img/bird.png" ><br>
+				 			<h4 class="focusTrack">Sports</h4>
+				 		</div>
+				 	</div>
+					<div class="panel">
+				 		<div class="panel-heading text-center panel-heading-color">
+				 			<h4>Equipped Card</h4>
+				 		</div>
+				 		<div class="panel-body">
+				 			<h5>Focused Track: <span class="focus focusTrack"></span></h5>
+				 			<h5>Focused Career: <span class="focus" id="focusCareer"></span></h5>
+				 			<h5>Focused Course: <span class="focus" id="focusCourse"></span></h5>
+				 		</div>
+				 	</div>
+				</div>
+				<div class="row hidden-sm hidden-md hidden-lg">
+					<div class="col-sm-12 text-center ">
+						<div class="panel">
+					 		<div class="panel-heading text-center panel-heading-color">
+					 			<h4>Here are the top 3 tracks for you!</h4>
+					 		</div>
+					 	</div>
+					</div>
+				</div>
+				<div class="col-xs-12 col-sm-8">
+					<div class="row">
 						<div class="col-xs-4 col-sm-4">
-						 	<div class="panel panelCareers">
+						 	<div class="panel panelRound panelTrack ">
 						 		<div class="panel-heading text-center">
-						 			<img class="title margins" src="static/img/bird.png" ><br>
-						 			<h5>Career Name</h5>
+						 			<span class="rank">1</span><img class="title margins" src="img/bird.png" ><br>
+						 			<h4></h4>
 						 		</div>
 						 	</div>
 						</div>
 						<div class="col-xs-4 col-sm-4">
-						 	<div class="panel panelCareers">
+						 	<div class="panel panelRound panelTrack">
 						 		<div class="panel-heading text-center">
-						 			<img class="title margins" src="static/img/bird.png" ><br>
-						 			<h5>Career Name</h5>
+						 			<span class="rank">2</span><img class="title margins" src="img/bird.png" ><br>
+						 			<h4 ></h4>
 						 		</div>
 						 	</div>
 						</div>
 						<div class="col-xs-4 col-sm-4">
-						 	<div class="panel panelCareers">
+						 	<div class="panel panelRound panelTrack">
 						 		<div class="panel-heading text-center">
-						 			<img class="title margins" src="static/img/bird.png" ><br>
-						 			<h5>Career Name</h5>
+						 			<span class="rank">3</span><img class="title margins" src="img/bird.png" ><br>
+						 			<h4></h4>
 						 		</div>
 						 	</div>
+						</div>
+						<div class="col-xs-4 col-sm-4 otherTracks">
+						 	<div class="panel panelRound panelTrack ">
+						 		<div class="panel-heading text-center">
+						 			<span class="rank">4</span><img class="title margins" src="img/bird.png" ><br>
+						 			<h4></h4>
+						 		</div>
+						 	</div>
+						</div>
+						<div class="col-xs-4 col-sm-4 otherTracks">
+						 	<div class="panel panelRound panelTrack">
+						 		<div class="panel-heading text-center">
+						 			<span class="rank">5</span><img class="title margins" src="img/bird.png" ><br>
+						 			<h4 ></h4>
+						 		</div>
+						 	</div>
+						</div>
+						<div class="col-xs-4 col-sm-4 otherTracks">
+						 	<div class="panel panelRound panelTrack">
+						 		<div class="panel-heading text-center">
+						 			<span class="rank">6</span><img class="title margins" src="img/bird.png" ><br>
+						 			<h4></h4>
+						 		</div>
+						 	</div>
+						</div>
+					</div>
+					<div id="careerscourses">
+						<div class="row" id="careersrow">
+							<div class="col-xs-4 col-sm-4">
+							 	<div class="panel panelRound panelCareers">
+							 		<div class="panel-heading text-center">
+							 			<span class="rank">1</span><img class="titlesub margins" src="img/bird.png" ><br>
+							 			<h5></h5>
+							 		</div>
+							 	</div>
+							</div>
+							<div class="col-xs-4 col-sm-4">
+							 	<div class="panel panelRound panelCareers">
+							 		<div class="panel-heading text-center">
+							 			<span class="rank">2</span><img class="titlesub margins" src="img/bird.png" ><br>
+							 			<h5></h5>
+							 		</div>
+							 	</div>
+							</div>
+							<div class="col-xs-4 col-sm-4">
+							 	<div class="panel panelRound panelCareers">
+							 		<div class="panel-heading text-center">
+							 			<span class="rank">3</span><img class="titlesub margins" src="img/bird.png" ><br>
+							 			<h5></h5>
+							 		</div>
+							 	</div>
+							</div>
+						</div>
+						<div id="delayrow">
+							<div class="row" id="coursesrow">	
+								<div class="col-xs-4 col-sm-4">
+								 	<div class="panel panelRound panelCourses">
+								 		<div class="panel-heading">
+								 			<h6></h6>
+									 		<span class="desc"></span>
+								 		</div>
+								 	</div>
+								</div>
+								<div class="col-xs-4 col-sm-4">
+								 	<div class="panel panelRound panelCourses">
+								 		<div class="panel-heading">
+								 			<h6></h6>
+									 		<span class="desc"></span>
+								 		</div>
+								 	</div>
+								</div>
+								<div class="col-xs-4 col-sm-4">
+								 	<div class="panel panelRound panelCourses">
+								 		<div class="panel-heading">
+								 			<h6></h6>
+									 		<span class="desc"></span>
+								 		</div>
+								 	</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-xs-12 col-sm-12" id="dontLikeTrack">
+							<button class="btn" onclick="showOtherTracks()">I don't like any of these <span id="dontLike">Tracks</span>.</button>
 						</div>
 					</div>
 				</div>
-				<div id="delayrow">
-					<div class="row" id="coursesrow">
-						<div class="col-xs-12 col-sm-8 col-sm-offset-2">
-							<div class="col-xs-4 col-sm-4">
-							 	<div class="panel panelCourses">
-							 		<div class="panel-heading">
-							 			<h6>Possible Courses</h6>
-								 		<span>Description</span>
-							 		</div>
-							 	</div>
-							</div>
-							<div class="col-xs-4 col-sm-4">
-							 	<div class="panel panelCourses">
-							 		<div class="panel-heading">
-							 			<h6>Possible Courses</h6>
-								 		<span>Description</span>
-							 		</div>
-							 	</div>
-							</div>
-							<div class="col-xs-4 col-sm-4">
-							 	<div class="panel panelCourses">
-							 		<div class="panel-heading">
-							 			<h6>Possible Courses</h6>
-								 		<span>Description</span>
-							 		</div>
-							 	</div>
-							</div>
-						</div>
-					</div>
+				<div class="col-xs-12 col-sm-2">
+					<div class="panel">
+				 		<div class="panel-heading text-center panel-heading-color">
+				 			<h4>What grades should I focus on?</h4>
+				 		</div>
+				 		<div class="panel-body ">
+				 			<h5><span class="focus gradesFocus"></span></h5>
+				 			<h5><span class="focus gradesFocus"></span></h5>
+				 		</div>
+				 	</div>
 				</div>
 			</div>
 		</div>
+		</article>
+		<footer w3-include-html="include/footer.html"></footer>
 
-		{% include "include/footer.html" %}
-		<!--<div w3-include-html="include/footer.html" class="row footer"></div>-->
+
+		<!-- Modal -->
+		<div id="myModal" class="modal fade" role="dialog">
+			<div class="modal-dialog">
+
+		    <!-- Modal content-->
+		    	<div class="modal-content">
+		      		<div class="modal-header panel-heading-color">
+		        		<button type="button" class="close" data-dismiss="modal">&times;</button>
+		        		<h4 class="modal-title">Set Focus </h4>
+		      		</div>
+		      		<div class="modal-body">
+	      				<div class="row">
+	      					<div class="col-sm-6 text-center">
+	      						<img class="titleEquipped" src="img/bird.png">
+	      					</div>
+	      					<div class="col-sm-6">
+	      						<p>Are you sure you want to set your focus to <span class="focus" id="setCourse"></span> under the career <span class="focus" id="setCareer"></span>? <br><br>This will set your track to <span class="focus" id="setTrack"></span>.</p>
+	      					</div>
+	      				</div>
+		      		</div>
+		      		<div class="modal-footer">
+		      			<div class="row">
+		      				<div class="col-xs-6 col-sm-4">
+		      					<button type="button" class="btn" data-dismiss="modal" onclick="setFocusModal()">Yes!</button>
+		      				</div>
+		      				<div class="col-xs-6 col-sm-4 col-sm-offset-4">
+		      					<button type="button" class="btn" data-dismiss="modal">No</button>
+		      				</div>
+		      			</div>
+		      		</div>
+		    	</div>
+
+		  	</div>
+		</div>
+
 	</body>
-	{% endblock %}
 </html>
-
-<script>
-	var Tracks = {
-					ABM : ["Business","Public and Human Services","ABMCareer","CourseA","CourseB","CourseM","CourseM","CourseB","CourseA","CourseB","CourseM","CourseA","CourseA","CourseA","CourseA","CourseA","CourseA","CourseA","CourseA","CourseA","CourseA"],
-					HUMSS : ["Business","Public and Human Services","ABMCareer","CourseA","CourseB","CourseM","CourseM","CourseB","CourseA","CourseB","CourseM","CourseA","CourseA","CourseA","CourseA","CourseA","CourseA","CourseA","CourseA","CourseA","CourseA"],
-					STEM : ["Science","NotScience","VeryScience","HAHAHA","Courses","WAOW","CourseM","CourseB","CourseA","CourseB","CourseM","CourseA","CourseA","CourseA","CourseA","CourseA","CourseA","CourseA","CourseA","CourseA","CourseA"],
-					GAS : ["BE","Normal","GAS","Gasolinahan","Exist","Explode","CourseM","CourseB","CourseA","CourseB","CourseM","CourseA","CourseA","CourseA","CourseA","CourseA","CourseA","CourseA","CourseA","CourseA","CourseA"],
-					ArtsDesign : ["Paint","Public Paint","Computer Paint","NOt Paint","CourseB","CourseM","CourseM","CourseB","CourseA","CourseB","CourseM","CourseA","CourseA","CourseA","CourseA","CourseA","CourseA","CourseA","CourseA","CourseA","CourseA"],
-					Sports: ["Physical Education Instructor", "Physical Therapist", "Coach",
-							 "Bachelor in Elementary Education Major in MAPE", "Description of AHAHAHD",
-							 "Bachelor in Secondary Education Major in MAPEH", "Description of PAAAD",
-							 "Bachelor of Science in Education Major in Physical Education", "Description of PEED",
-							 "Skating", "Description of PEID",
-							 "Rolling", "Description of PEID",
-							 "Hating", "Description of PADAAD",
-							 "TEST", "Description of PEID",
-							 "Sports", "Description of PAAOOAID",
-							 "AAHAH", "Description of PEID"]
-				};
-
-	$(document).ready(function(){
-		$( ".panel-body" ).hide();
-		$( "#careersrow" ).hide();
-		$( "#coursesrow" ).hide();
-		$( "#careerscourses" ).hide();
-		$( "#delayrow" ).hide();
-		
-		checkColor();
-		var iterator = 0;
-		$( ".panelTrack" ).click(function() {
-			// Colors
-			track = $(this).find("h4").html();
-			classHold = track.toLowerCase()+"Class";
-			$('.panelCareers').each(function(){
-		        var panelHeading = $(this).find(".panel-heading");
-		        panelHeading.removeClass();
-		        panelHeading.addClass("panel-heading text-center "+classHold);
-		        // panelHeading.css("opacity","0.9");
-		    });
-			$('.panelCourses').each(function(){
-		        var panelHeading = $(this).find(".panel-heading");
-		        panelHeading.removeClass();
-		        panelHeading.addClass("panel-heading text-center "+classHold);
-		        // panelHeading.css("opacity","0.8");
-		    });
-
-			// Set Text
-			iterator = 0;
-			$('.panelCareers').each(function(){
-		        $(this).find("h5").text(Tracks[track][iterator++]);
-		    });
-
-			// Animations
-			$( "#careerscourses" ).slideToggle( "slow", function() {
-				$( "#careersrow" ).slideToggle( "slow", function() {
-					$( ".panelCareers" ).slideDown( "slow", function() {});
-					$( "#delayrow" ).slideUp( "slow", function() {
-						$( "#coursesrow" ).slideUp( "slow", function() {});
-					});
-				});
-			});
-			$('.panelTrack').not(this).each(function(){
-		        $(this).slideToggle();
-		    });
-		});
-
-		$( ".panelCareers" ).click(function() {
-			//setText
-			iterator = 3 + (6 * $(".panelCareers").index(this));
-			$('.panelCourses').each(function(){
-		        $(this).find("h6").text(Tracks[track][iterator++]);
-		        $(this).find("span").text(Tracks[track][iterator++]);
-		    });
-
-			// Animations
-			$( "#delayrow" ).slideToggle( "slow", function() {
-				$( "#coursesrow" ).slideToggle( "slow", function() {});
-			});
-			$(".panelCareers").not(this).each(function(){
-		        $(this).slideToggle();
-		    });
-		});
-	});
-
-	function checkColor(){
-		$('.panelTrack').each(function(){
-	        $(this).find(".panel-heading").addClass($(this).find("h4").html().toLowerCase()+"Class");
-	    });
-	}
-</script>
-<script> w3.includeHTML(); </script>
