@@ -55,7 +55,6 @@ class speroNN:
         for i in range(len(data)):
             size+=len(data[i])
         
-        
         x_list = []
         y_list = []
         for i in range(len(data)):
@@ -142,6 +141,11 @@ class speroNN:
 
         saver.save(self.sess, self.save_path, global_step=i) 
 
+    def Input(self,X):
+        yhat = self.recommend()
+        self.loadSession()
+        yhat = self.sess.run()
+        
 
 s = speroNN()
 s.trainNN()
