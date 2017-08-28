@@ -18,42 +18,56 @@ def index():
 @app.route('/home.html')
 @app.route('/home')
 def home():
+    if not 'loggedIN' in session:
+        if(not session['loggedIN']):
+            return redirect(url_for('index'))
     return render_template('home.html')
 
 @app.route('/grades.html')
 @app.route('/grades')
 def grades():
+    if not 'loggedIN' in session:
+        if(not session['loggedIN']):
+            return redirect(url_for('index'))
     return render_template('grades.html')
 
 @app.route('/questions.html')
 @app.route('/questions')
 def questions():
+    if not 'loggedIN' in session:
+        if(not session['loggedIN']):
+            return redirect(url_for('index'))
     return render_template('questions.html')
 
 #use for login button
-@app.route('/login')
+@app.route('/login',methods=['POST'])
 def login(): 
     cursor = conn.cursor()
-    cursor.execute("SELECT * from users")
+    content = request.get_json(force=True)
+    uname = content['username']
+    password = content['password']
+    cursor.execute("SELECT user_id, username, password, gradeLevel, trackEquipped, carrerChosen, programChosen, email FROM users WHERE username = %s AND password = %s" % (uname,password))
     row = cursor.fetchone()
-    session['loggedIN'] = True
+    if(row):
+        session['loggedIN'] = True
     #user ID
-    session['uID'] = row[0]
+        session['uID'] = row[0]
     #gradelevel
-    session['gL'] = int(row[-1])
-    #not finished yet
-    #expect return js.dumps({"success" : False})
-    #if success true refresh page I'll redirect it if session is available
-    #if success false just preventDefault to out put error
-    return render_template('home.html')
+        session['gL'] = int(row[3])
+        ret = {'success' : True, 'User' : {'id' : str(row[0]), 'username' : str(row[1]), 'password' : str(row[2]), 'gradeLevel' : str(row[3]), 'equippedTrack' : str(row[4]), 'chosenCareer' : str(row[5]), 'chosenProgram' : str(row[6]), 'email' : str(row[7])}}
+    else:
+        ret = {'success' : False}
+    #if success is true just use ret['User'] to get the user infos
+    return js.dumps(ret)
 
 #user register
 @app.route('/registerUser', methods=['GET'])
 def register():
-    username = str(request.form['username'])
-    password = str(request.form['password'])
-    grade = str(request.form['grade'])
-    email = str(request.form['email'])
+    content = request.get_json(force=True)
+    username = str(content['username'])
+    password = str(content['password'])
+    grade = str(content['grade'])
+    email = str(content['email'])
     cursor = conn.cursor()
     cursor.execute("INSERT INTO users (username,password,email,gradeLevel) VALUES (%s,%s,%s,%s)",(username,password,grade,email))
     conn.commit()
@@ -61,32 +75,36 @@ def register():
     ret = { 'success' : True}
     return js.dumps(ret)
 
-@app.route('/updateGradeLevel')
+@app.route('/updateUser')
 def updateGL():
     if 'loggedIN' in session:
         if( session['loggedIN']):
-            if(session['gL'] < 10):
-                session['gL'] += 1
-                cursor = conn.cursor()
-                cursor.execute("UPDATE users SET gradeLevel = %s WHERE user_id = %s", (session['gL'],session['uID']))
-                conn.commit()
-                #returns successful or not if successful it also returns the upgraded gradelevel json format
-                return js.dumps({'success' : True, 'gradeLevel' : str(session['gL'])})
-            else:
-                return js.dumps({'success' : False})
+            content = request.get_json(force=True)
+            un = content['username']
+            pw = content['password']
+            gl = content['gradeLevel']
+            et = content['equippedTrack']
+            cc = content['chosenCareer']
+            cp = content['chosenProgram']
+            email = content['email']
+
+            cursor = conn.cursor()
+            cursor.execute("UPDATE users SET username = %s, password = %s, gradeLevel = %s, trackEquipped = %s, carrerChosen = %s, programChosen = %s, email = %s WHERE user_id = %s" % (un,pw,gl,et,cc,cp,email,session['uID']))
+
     return redirect(url_for('index'))
 
 @app.route('/insertRiasec', methods=['GET'])
 def insertRiasec():
     if "loggedIN" in session:
-        if(session['loggedIN']):
+        if(session['loggedIN' ]):
             uid = session['uID']
-            r = str(request.form('R'))
-            i = str(request.form('I'))
-            a = str(request.form('A'))
-            s = str(request.form('S'))
-            e = str(request.form('E'))
-            c = str(request.form('C'))
+            content = request.get_json(force=True)
+            r = str(content('R'))
+            i = str(content('I'))
+            a = str(content('A'))
+            s = str(content('S'))
+            e = str(content('E'))
+            c = str(content('C'))
             date = time.strftime("YYYY-MM-DD")
 
             cursor = conn.cursor()

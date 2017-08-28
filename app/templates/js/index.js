@@ -50,13 +50,14 @@ function checkCredentials(){
 		&& $("#username").val() != "" && $("#password").val() != ""){
 		UserHold["User"]["username"] = $("#username").val();
 		UserHold["User"]["password"] = $("#password").val();
-		storeData();
+		
 		
 		$.post( "/login", function( data ) {
 			if(data["success"]){
 				$.post( "/getAllGrades", function( data ) {
 					grades["Grades"] = data;
 				});
+				storeData();
 				if(grades["Grades"] == null){
 					fadeOut(1);
 				}else{
