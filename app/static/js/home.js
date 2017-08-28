@@ -208,16 +208,20 @@ function getData(){
 
 function storeDataLocal(){
 	var dataHold = {};
-
 	if (typeof(Storage) !== "undefined") {
-		dataHold = {"resultTracks" : resultTracks}
-		localStorage.setItem("SPEROresultTracks",JSON.stringify(dataHold));
-		dataHold = {"Tracks" : Tracks}
-		localStorage.setItem("SPEROTracks",JSON.stringify(dataHold));
 		dataHold = {"focusGrades" : focusGrades}
 		localStorage.setItem("SPEROfocusGrades",JSON.stringify(dataHold));
 		dataHold = {"User" : User};
 		localStorage.setItem("SPEROUser",JSON.stringify(dataHold));
+		$.ajax({
+			type: "POST",
+			url: "/updateUser",
+			data: {User},
+			contentType:"application/json",
+			success: function(data){
+				alert("Successful update USER");
+			}
+		});
 	} else {
 	    // Sorry! No Web Storage support..
 	}

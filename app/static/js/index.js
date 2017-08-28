@@ -10,7 +10,68 @@ var UserHold = {
 						email : ""
 					}
 				};
-var grades = { Grades : {} };
+var grades = { Grades : {
+					grade1 : [
+						[null,null,null,null,null,null],
+						[null,null,null,null,null,null],
+						[null,null,null,null,null,null],
+						[null,null,null,null,null,null],
+					],
+					grade2 : [
+						[null,null,null,null,null,null],
+						[null,null,null,null,null,null],
+						[null,null,null,null,null,null],
+						[null,null,null,null,null,null],
+					],
+					grade3 : [
+						[null,null,null,null,null,null],
+						[null,null,null,null,null,null],
+						[null,null,null,null,null,null],
+						[null,null,null,null,null,null],
+					],
+					grade4 : [
+						[null,null,null,null,null,null],
+						[null,null,null,null,null,null],
+						[null,null,null,null,null,null],
+						[null,null,null,null,null,null],
+					],
+					grade5 : [
+						[null,null,null,null,null,null],
+						[null,null,null,null,null,null],
+						[null,null,null,null,null,null],
+						[null,null,null,null,null,null],
+					],
+					grade6 : [
+						[null,null,null,null,null,null],
+						[null,null,null,null,null,null],
+						[null,null,null,null,null,null],
+						[null,null,null,null,null,null],
+					],
+					grade7 : [
+						[null,null,null,null,null,null],
+						[null,null,null,null,null,null],
+						[null,null,null,null,null,null],
+						[null,null,null,null,null,null],
+					],
+					grade8 : [
+						[null,null,null,null,null,null],
+						[null,null,null,null,null,null],
+						[null,null,null,null,null,null],
+						[null,null,null,null,null,null],
+					],
+					grade9 : [
+						[null,null,null,null,null,null],
+						[null,null,null,null,null,null],
+						[null,null,null,null,null,null],
+						[null,null,null,null,null,null],
+					],
+					grade10 : [
+						[null,null,null,null,null,null],
+						[null,null,null,null,null,null],
+						[null,null,null,null,null,null],
+						[null,null,null,null,null,null],
+					]
+				} };
 
 var result = { resultTracks : ["STEM","ArtsDesign","Sports","HUMSS","ABM","GAS"] };
 
@@ -51,24 +112,63 @@ function checkCredentials(){
 		UserHold["User"]["username"] = $("#username").val();
 		UserHold["User"]["password"] = $("#password").val();
 		
+		var username = $("#username").val();
+		var pass = $("#password").val();
 		$.ajax({
 			type: "POST",
 			url: "/login",
-			data: {"username" : $("#username").val(), "pass" : $("#password").val()},
+			data: JSON.stringify({"username" : username, "pass" : pass}),
 			contentType:"application/json",
 			success: function(data){
 				alert(data);
 				if(data !=null && data["success"]){
+					UserHold["User"] = data["User"];
 					$.ajax({
-						type: "POST",
+						type: "GET",
+						url: "/getRiasec",
+						success: function(data){
+							if(data != null && data["success"]){
+								alert("Successful GET RIASEC "+ data["r"]);
+								riasec["riasecScore"]["R"] = data["r"];
+								riasec["riasecScore"]["I"] = data["i"];
+								riasec["riasecScore"]["A"] = data["a"];
+								riasec["riasecScore"]["S"] = data["s"];
+								riasec["riasecScore"]["E"] = data["e"];
+								riasec["riasecScore"]["C"] = data["c"];
+							}
+						}
+					});
+					$.ajax({
+						type: "GET",
+						url: "/getTracks",
+						success: function(data){
+							if(data != null){
+								alert("Successful GET RRESULTTRACKS "+data[0]);
+								result["resultTracks"][0] = data["0"];
+								result["resultTracks"][1] = data["1"];
+								result["resultTracks"][2] = data["2"];
+								result["resultTracks"][3] = data["3"];
+								result["resultTracks"][4] = data["4"];
+								result["resultTracks"][5] = data["5"];
+							}
+						}
+					});
+					$.ajax({
+						type: "GET",
 						url: "/getAllGrades",
 						success: function(data){
-							alert(data);
+							alert("GRADES "+data);
 							grades["Grades"] = data;
 						}
 					});
-					storeData();
-					if(grades["Grades"] == null){
+					var y = 4;
+					var z = 6;
+					for(var x = 1; x <= 10 && y == 4; x++){
+						for(y = 0; y < 4 z == 6; y++){
+							for(z = 0; z < 6 && grades["Grades"]["grade"+x][y][z] == null; z++){}
+						}
+					}
+					if(x > 10){
 						fadeOut(1);
 					}else{
 						fadeOut(4);

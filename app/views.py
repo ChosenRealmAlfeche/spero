@@ -144,7 +144,7 @@ def getALlGrades():
             rows = cursor.fetchall()
             ret = {}
             for row in rows:
-                ret[row[0]][row[1]] = { 'english' : row[2], 'math' : row[3], 'science' : row[4], 'filipino' : row[5], 'aralPan' : row[6], 'mapeh' : row[7]}
+                ret["grade"+row[0]][row[1]] = [ row[2],row[3],row[4],row[5],row[6],row[7]]
             return js.dumps(ret)
     return redirect(url_for('index'))
 

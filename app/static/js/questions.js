@@ -55,12 +55,12 @@ function loadQuestion(state){
 		Letter = question[1];
 		
 	}else{
-		var array=[];
-		for(a in Score){
-		 array.push([a,Score[a]]);
-		}
-		array.sort(function(a,b){return a[1] - b[1]});
-		array.reverse();
+		// var array=[];
+		// for(a in Score){
+		//  array.push([a,Score[a]]);
+		// }
+		// array.sort(function(a,b){return a[1] - b[1]});
+		// array.reverse();
 		storeDataLocal();
 		window.location = "home.html";
 		// alert("RIASEC Score: \n"+array[0][0]+" "+array[0][1]+
@@ -94,6 +94,17 @@ function storeDataLocal(){
 	if (typeof(Storage) !== "undefined") {
 		dataHold = {"riasecScore" : Score}
 		localStorage.setItem("SPEROriasecScore",JSON.stringify(dataHold));
+		$.ajax({
+			type: "POST",
+			url: "/insertRiasec",
+			data: JSON.stringify(Score),
+			contentType:"application/json",
+			success: function(data){
+				if(data != null && data["success"]){
+					alert("Succesful indert of riasec!");
+				}
+			}
+		});
 	} else {
 	    // Sorry! No Web Storage support..
 	}
