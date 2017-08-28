@@ -50,23 +50,34 @@ function checkCredentials(){
 		&& $("#username").val() != "" && $("#password").val() != ""){
 		UserHold["User"]["username"] = $("#username").val();
 		UserHold["User"]["password"] = $("#password").val();
-		storeData();
 		
-		$.post( "/login", function( data ) {
-			if(data["success"]){
-				$.post( "/getAllGrades", function( data ) {
-					grades["Grades"] = data;
-				});
-				if(grades["Grades"] == null){
-					fadeOut(1);
+		$.ajax({
+			type: "POST",
+			url: "/login",
+			data: {"username" : $("#username").val(), "pass" : $("#password").val()},
+			contentType:"application/json",
+			success: function(data){
+				alert(data);
+				if(data !=null && data["success"]){
+					$.ajax({
+						type: "POST",
+						url: "/getAllGrades",
+						success: function(data){
+							alert(data);
+							grades["Grades"] = data;
+						}
+					});
+					storeData();
+					if(grades["Grades"] == null){
+						fadeOut(1);
+					}else{
+						fadeOut(4);
+					}
 				}else{
-					fadeOut(4);
+					alert("User Does Not Exist!!")
 				}
-			}else{
-				alert("User Does Not Exist!!")
 			}
 		});
-		
 	}else{
 		alert("Please input credentials!");
 	}
