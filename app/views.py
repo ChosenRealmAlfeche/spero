@@ -44,9 +44,9 @@ def questions():
 def login(): 
     cursor = conn.cursor()
     content = request.get_json(force=True)
-    uname = content['username']
-    password = content['password']
-    cursor.execute("SELECT user_id, username, password, gradeLevel, trackEquipped, carrerChosen, programChosen, email FROM users WHERE username = %s AND password = %s" % (uname,password))
+    uname = content["username"]
+    password = content["pass"]
+    cursor.execute("SELECT user_id, username, password, gradeLevel, trackEquipped, carrerChosen, programChosen, email FROM users WHERE username = %s AND password = %s" % (uname["username"],password))
     row = cursor.fetchone()
     if(row):
         session['loggedIN'] = True
