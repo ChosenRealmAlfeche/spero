@@ -139,16 +139,32 @@ class speroNN:
         
             print("Epoch - %d || training accuracy : %f || test accuracy : %f" % (i, 100 * train_accuracy,100 * test_accuracy))
 
-        saver.save(self.sess, self.save_path, global_step=i) 
+        saver.save(self.sess, self.save_path) 
 
-    def Input(self,X):
+    def Input(self):
+        X = np.zeros([1,10,12])
         yhat = self.recommend()
         self.loadSession()
-        yhat = self.sess.run()
-        
-
-s = speroNN()
-s.trainNN()
+        yhat = self.sess.run( yhat, feed_dict={self.x : X})
+        tmap = ['STEM', 'ABM', 'HUMMS', 'GAS', 'Arts & Design', 'Sports Track']
+        s = []
+        rng = range(len(yhat[0]))
+        for i in rng:
+            for i in rng:
+                if not i in s:
+                    gIdx = i
+                    break
+            for j in rng:
+                if yhat[0][gIdx] < yhat[0][j]:
+                    if not j in s:
+                        gIdx = j
+            s.append(gIdx)
+        ret = []
+        for i in s:
+            ret.append(tmap[i])
+        return ret
+#s = speroNN()
+#print(s.Input())
 #train_x, test_x, train_y, test_y = s.loadData()
 #sess = tf.Session()
 #sess.run(tf.global_variables_initializer())

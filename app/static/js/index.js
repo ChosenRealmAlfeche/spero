@@ -54,7 +54,8 @@ function checkCredentials(){
 		$.ajax({
 			type: "POST",
 			url: "/login",
-			data: {"username" : $("#username").val(), "pass" : $("#password").val()},
+			data: JSON.stringify({"username" : $("#username").val(), "pass" : $("#password").val()}),
+			dataType: "json",
 			contentType:"application/json",
 			success: function(data){
 				alert(data);
