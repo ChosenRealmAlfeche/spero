@@ -143,7 +143,19 @@ def getALlGrades():
             rows = cursor.fetchall()
             ret = {}
             for row in rows:
-                ret["grade"+row[0]][row[1]] = [ row[2],row[3],row[4],row[5],row[6],row[7]]
+                if not "grade"+row[0] in ret:
+                    ret["grade"+row[0]] = []
+                ret["grade"+row[0]].append([ row[2],row[3],row[4],row[5],row[6],row[7]])
+            nR = len(ret)
+            nRR = len(ret[-1])
+            for i in range(nRR):
+                ret[-1].append([None,None,None,None,None,None])
+            for i in range(nR, 11):
+                ret["grade"+i] = []
+                for j in range(4):
+                    ret["grade"+i].append([None,None,None,None,None,None])
+
+
             return js.dumps(ret)
     return redirect(url_for('index'))
 
