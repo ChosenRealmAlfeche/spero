@@ -127,8 +127,13 @@ function setFocusModal(){
 	User["chosenProgram"] = $("#setCourse").html();
 	setFocus();
 
+	var index;
 	//setGrades
-	var index = Math.floor(Math.random()*focusGrades.length);
+	$(".panelTrack").each(function(){
+		if($(this).find("h4").html() == clickedCareer){
+			index = $(this).find(".rank").html() - 1;
+		}
+	});
 	var iterator = 0;
 	$(".gradesFocus").each(function (){
 		$(this).html(focusGrades[index][iterator++]);
