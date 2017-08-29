@@ -19,23 +19,36 @@ class speroDT:
         self.predict_proba(X[0:1])
 
     def predict_proba(self, X):
+
+        path = getcwd() + "\\datasets\\HollandCode.xlsx"
+        data = pd.read_excel( path, sheetname=[0])
+
+        temp = sorted(set(data[0]['Occupational Title']))
+        occT = []
+        for x in temp:
+            occT.append(x)
+
         x = self.clf.predict(X)
-        rng =len(x[0])
+        rng =range(len(x[0]))
         s = []
         for i in rng:
+            gIdx = False
             for i in rng:
-                if not i in s:
+                if not i in s and x[0][i] != 0:
                     gIdx = i
                     break
             for j in rng:
-                if x[0][gIdx] < x[0][j]:
+                if gIdx and x[0][gIdx] < x[0][j]:
                     if not j in s:
                         gIdx = j
             s.append(gIdx)
+            del gIdx
         ret = []
         for i in s:
-            ret.append(tmap[i])
-        return ret
+            ret.append(occT[i])
+        
+        #print(ret[:3])
+        return ret[0:3]
 
 
     def loadDate(self):
