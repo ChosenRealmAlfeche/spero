@@ -161,6 +161,15 @@ function storeDataLocal(){
 		localStorage.setItem("SPEROUser",JSON.stringify(dataHold));
 		dataHold = {"Grades" : Grades};
 		localStorage.setItem("SPEROGrades",JSON.stringify(dataHold));
+		$.ajax({
+			type: "POST",
+			url: "/updateUser",
+			data: JSON.stringify({"User" : User}),
+			contentType:"application/json",
+			success: function(data){
+				alert("Successful update USER");
+			}
+		});
 	} else {
 	    // Sorry! No Web Storage support..
 	}	

@@ -153,14 +153,7 @@ function checkCredentials(){
 							}
 						}
 					});
-					$.ajax({
-						type: "GET",
-						url: "/getAllGrades",
-						success: function(data){
-							alert("GRADES "+data);
-							grades["Grades"] = data;
-						}
-					});
+					
 					var y = 4;
 					var z = 6;
 					for(var x = 1; x <= 10 && y == 4; x++){

@@ -214,14 +214,12 @@ function getData(){
 function storeDataLocal(){
 	var dataHold = {};
 	if (typeof(Storage) !== "undefined") {
-		dataHold = {"focusGrades" : focusGrades}
-		localStorage.setItem("SPEROfocusGrades",JSON.stringify(dataHold));
 		dataHold = {"User" : User};
 		localStorage.setItem("SPEROUser",JSON.stringify(dataHold));
 		$.ajax({
 			type: "POST",
 			url: "/updateUser",
-			data: {User},
+			data: JSON.stringify({"User" : User}),
 			contentType:"application/json",
 			success: function(data){
 				alert("Successful update USER");
